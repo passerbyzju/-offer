@@ -1,0 +1,88 @@
+非暴力解法(in-plane 算法)：
+
+1.确定两个指针（i,j)
+
+2.j 用来循环遍历数组
+
+3.i用来记录当前偶数的位置（<i的位置都已经是奇数了））
+
+````java
+public class JO16{
+	public static void main(String[] args){
+//		int[] array= new int[]{1,4,3,7,6,5,8};
+		int[] array= new int[]{2,3,4,7,8,5};//[3,2,4,7,8,5]
+		int i=0;
+		for(int j=0;j<array.length;j++){
+			if(array[j]%2==1){//如果为奇数，进入操作
+				int tem= array[j];//in-plane 算法：类似插入排序
+				for(int k=j-1;k>=i;--k){
+					array[k+1]=array[k];
+				}
+				array[i]=tem;
+				i++;
+			}
+		}
+		for(int m=0;m<array.length;m++){
+			System.out.println(array[m]);
+		}
+	}
+}
+````
+
+插入排序实现
+
+![image-20201201173021742](C:\Users\z\AppData\Roaming\Typora\typora-user-images\image-20201201173021742.png)
+
+````java
+
+public class InsertSort2{
+	public static void main(String[] args){
+		int[] array= new int[]{1,1,3,7,6,5,8};//[1,4
+		for(int i=1;i<array.length;i++){
+			for(int j=i-1;j>0;j--){
+				while(array[j+1]<array[j]){
+					int temp=array[j+1];
+					array[j+1]=array[j];
+					array[j]=temp;
+				}
+			}
+		}
+	
+	for(int i=0;i<array.length;i++){
+					System.out.println(array[i]);
+			
+		}
+
+	}
+}
+````
+
+
+
+暴力解法：
+
+````java
+public class JO14{
+	public static void main(String[] args){
+		int[] array= new int[]{2,4,3,7,6,5,8};
+		int j=0;
+		int[] array1= new int[array.length];
+		for(int i=0;i<array.length;i++){
+			if(array[i]%2==1){
+			array1[j]=array[i];
+			j++;
+			}
+		}
+		for(int i=0;i<array.length;i++){
+			if(array[i]%2==0){
+			array1[j]=array[i];
+			j++;
+			}
+		}
+		for(int i=0;i<array.length;i++){
+			System.out.println(array1[i]);
+		}
+	}
+}
+````
+
